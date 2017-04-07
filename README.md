@@ -1,2 +1,2 @@
-# controle-de-estoque
+# EstoqueAki
 Sistema Gerenciador de Controle de Estoque
