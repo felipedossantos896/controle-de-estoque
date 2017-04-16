@@ -31,6 +31,7 @@ public class ControleEstoqueBean implements Serializable{
 	@Inject
 	private CadastroMaterialService cadastroMaterialService;
 	
+	
 	public void consultar(){
 		todosMateriais = materiais.todas();
 	}
@@ -45,7 +46,9 @@ public class ControleEstoqueBean implements Serializable{
 		
 		mensagens.info("Material Salvo com Sucesso!");
 	}
-
+	
+	// Getters e Setters
+	
 	public List<Material> getTodosMateriais() {
 		return todosMateriais;
 	}

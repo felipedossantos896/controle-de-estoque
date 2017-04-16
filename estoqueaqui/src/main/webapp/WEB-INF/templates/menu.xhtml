@@ -1,14 +1,30 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
 
-</body>
-</html>
+	<nav class="aw-menu">
+		<ul>
+			<li>
+				<h:link>
+					<i class="fa  fa-fw  fa-home"></i>Dashboard
+				</h:link>
+			</li>
+			<li class="is-selected">
+				<h:link outcome="/ControleEstoque.xhtml">
+					<i class="fa  fa-fw  fa-file-text"></i>Cadastro Estoque
+				</h:link>
+			</li>
+			<li>
+				<h:link outcome="/lancamentos.xhtml">
+					<i class="fa  fa-fw  fa-area-chart"></i>Lançamentos
+				</h:link>
+			</li>
+			<li>
+				<h:link>
+					<i class="fa  fa-fw  fa-cog"></i>Configurações
+				</h:link>
+			</li>
+		</ul>
+	</nav>
+
+</ui:composition>
