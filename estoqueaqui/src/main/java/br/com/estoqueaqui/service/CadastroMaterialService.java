@@ -17,7 +17,7 @@ public class CadastroMaterialService implements Serializable{
 	
 	@Transacional
 	public void salvar(Material material){
-		materiais.guardar(material);
+		materiais.guardar(material);	
 	}
 	
 	@Transacional

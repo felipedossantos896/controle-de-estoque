@@ -14,20 +14,20 @@ public class Materiais implements Serializable {
 
 	@Inject
 	private EntityManager manager;
-	
-	public Material porId(Long id){
+
+	public Material porId(Long id) {
 		return manager.find(Material.class, id);
 	}
-	
-	public List<Material> todas(){
+
+	public List<Material> todas() {
 		return manager.createQuery("from Material", Material.class).getResultList();
 	}
-	
-	public Material guardar(Material material){
+
+	public Material guardar(Material material) {
 		return manager.merge(material);
 	}
-	
-	public void remover(Material material){
+
+	public void remover(Material material) {
 		material = porId(material.getId());
 		manager.remove(material);
 	}

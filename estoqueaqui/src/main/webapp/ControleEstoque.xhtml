@@ -10,20 +10,18 @@
 		<f:metadata>
 			<f:viewAction action="#{controleEstoqueBean.consultar}" />
 		</f:metadata>
-		
+
 		<h1>Cadastro Estoque</h1>
-		
-		
-		
+
 		<h:form id="frm">
-			
+
 			<p:toolbar>
 				<f:facet name="left">
 					<p:commandButton value="Novo" icon="ui-icon-document"
 						id="novo-material"
 						action="#{controleEstoqueBean.prepararCadastro}" process="@this"
 						oncomplete="PF('cadastroMaterialDialog').show()">
-						<p:resetInput target="cadastro-material" />	
+						<p:resetInput target="cadastro-material" />
 					</p:commandButton>
 
 					<span class="ui-separator"> <span
@@ -51,7 +49,7 @@
 					<h:outputText value="#{material.fornecedor}" />
 				</p:column>
 				<p:column headerText="Valor Und.">
-					<h:outputText value="#{material.valor}" />
+					<h:outputText value="R$ #{material.valor}" />
 				</p:column>
 				<p:column headerText="Mínimo">
 					<h:outputText value="#{material.minimo}" />
@@ -84,8 +82,10 @@
 						value="#{controleEstoqueBean.editarMaterial.fornecedor}" />
 
 					<p:outputLabel value="Valor" for="valor" />
-					<p:inputText id="valor"
-						value="#{controleEstoqueBean.editarMaterial.valor}" />
+					<p:inputNumber id="valor"
+						value="#{controleEstoqueBean.editarMaterial.valor}"
+						decimalPlaces="2">
+					</p:inputNumber>
 
 					<p:outputLabel value="Mínimo" for="minimo" />
 					<p:inputText id="minimo"

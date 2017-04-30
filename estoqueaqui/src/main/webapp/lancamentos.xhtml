@@ -7,10 +7,12 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="content">
-		<h1>Lancamentos</h1>
-		
-		<section style="padding: 10px">
-			<ui:include src="/WEB-INF/templates/menu-lancamentos.xhtml" />
-		</section>
+		<h1>Lançamentos</h1>
+
+		<ui:include src="/WEB-INF/templates/menu-lancamentos.xhtml" />
+
+		<h2>Descrição do Produto</h2>
+
+		<ui:include src="/WEB-INF/lancamentos/descricao_do_produto.xhtml" />
 	</ui:define>
 </ui:composition>

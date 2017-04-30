@@ -1,6 +1,7 @@
 package br.com.estoqueaqui.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,7 +30,7 @@ public class Material implements Serializable {
 	private String fornecedor;
 
 	@Column(nullable = false)
-	private double valor;
+	private BigDecimal valor = new BigDecimal(0.00);
 
 	private int minimo;
 
@@ -72,15 +73,15 @@ public class Material implements Serializable {
 	public void setFornecedor(String fornecedor) {
 		this.fornecedor = fornecedor;
 	}
-
-	public double getValor() {
+	
+	public BigDecimal getValor() {
 		return valor;
 	}
 
-	public void setValor(double valor) {
+	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
-	
+
 	public int getMinimo() {
 		return minimo;
 	}
