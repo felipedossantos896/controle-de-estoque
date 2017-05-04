@@ -47,6 +47,13 @@ public class ControleEstoqueBean implements Serializable{
 		mensagens.info("Material Salvo com Sucesso!");
 	}
 	
+	/*public void excluir(){
+		cadastroMaterialService.excluir(editarMaterial);
+		consultar();
+		
+		mensagens.info("Material removido com sucesso");
+	}*/
+	
 	// Getters e Setters
 	
 	public List<Material> getTodosMateriais() {
