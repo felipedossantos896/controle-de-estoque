@@ -15,11 +15,13 @@
 
 		<h:form id="frm">
 
+			<p:messages id="msgs" />
+
 			<p:toolbar>
 				<f:facet name="left">
-					<p:commandButton value="Novo" icon="ui-icon-document"
-						id="novo-material"
+					<p:commandButton value="Novo" icon="fa fa-file" id="novo-material"
 						action="#{controleEstoqueBean.prepararCadastro}" process="@this"
+						update="cadastro-material"
 						oncomplete="PF('cadastroMaterialDialog').show()">
 						<p:resetInput target="cadastro-material" />
 					</p:commandButton>
@@ -28,10 +30,8 @@
 						class="ui-icon ui-icon-grip-dotted-vertical" />
 					</span>
 
-					<p:commandButton value="Editar" />
-
-					<!--<p:commandButton value="#{controleEstoqueBean.excluir}"
-						process="@this" update="tabela-materiais" icon="fa fa-trash" />-->
+					<p:commandButton icon="fa fa-edit" title="Editar" />
+					<p:commandButton icon="fa fa-trash" title="Exluir" />
 				</f:facet>
 			</p:toolbar>
 
@@ -57,15 +57,15 @@
 				<p:column headerText="Mínimo">
 					<h:outputText value="#{material.minimo}" />
 				</p:column>
-				<p:column headerText="Saldo estoque">
-					<h:outputText />
-				</p:column>
 			</p:dataTable>
 
 			<p:dialog header="Cadastro de Material"
 				widgetVar="cadastroMaterialDialog" id="cadastro-material"
 				draggable="false" resizable="false" closeOnEscape="true"
-				modal="true" width="600" height="220">
+				modal="true">
+
+				<p:messages id="msgs-dialog" />
+				<p:defaultCommand target="salvar-material" scope="cadastro-material" />
 
 				<h:panelGrid columns="2" id="panel-dialog">
 					<p:outputLabel value="Descrição" for="descricao" />
@@ -97,8 +97,8 @@
 					<p:outputLabel />
 					<p:commandButton value="Salvar" id="salvar-material"
 						action="#{controleEstoqueBean.salvar}" process="cadastro-material"
-						update="tabela-materiais msg"
-						oncomplete="PF('cadastroMaterialDialog').hide()" />
+						update="msgs-dialog panel-dialog"
+						oncomplete="if (!args.validationFailed) PF('cadastroMaterialDialog').hide()" />
 				</h:panelGrid>
 			</p:dialog>
 		</h:form>

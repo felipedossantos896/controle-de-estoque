@@ -7,6 +7,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Material implements Serializable {
@@ -17,21 +20,27 @@ public class Material implements Serializable {
 	@GeneratedValue
 	private Long id;
 
+	@NotEmpty
 	@Column(nullable = false, length = 150)
 	private String descricao;
 
+	@NotEmpty
 	@Column(nullable = false, length = 80)
 	private String tipo;
 
+	@NotEmpty
 	@Column(nullable = false, length = 80)
 	private String unidade;
 
+	@NotEmpty
 	@Column(nullable = false, length = 50)
 	private String fornecedor;
 
+	@NotNull
 	@Column(nullable = false)
 	private BigDecimal valor = new BigDecimal(0.00);
 
+	@NotNull
 	private int minimo;
 
 	public Long getId() {

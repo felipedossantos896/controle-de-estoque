@@ -5,8 +5,9 @@
 	version="2.2">
 
 	<application>
+		
 		<message-bundle>br.com.estoqueaqui.Messages</message-bundle>
-
+		
 		<locale-config>
 			<default-locale>pt_BR</default-locale>
 		</locale-config>

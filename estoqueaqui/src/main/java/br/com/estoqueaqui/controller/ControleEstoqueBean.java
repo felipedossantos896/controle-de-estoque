@@ -1,11 +1,14 @@
 package br.com.estoqueaqui.controller;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.primefaces.context.RequestContext;
 
 import br.com.estoqueaqui.model.Material;
 import br.com.estoqueaqui.repository.Materiais;
@@ -45,15 +48,11 @@ public class ControleEstoqueBean implements Serializable{
 		consultar();
 		
 		mensagens.info("Material Salvo com Sucesso!");
-	}
-	
-	/*public void excluir(){
-		cadastroMaterialService.excluir(editarMaterial);
-		consultar();
 		
-		mensagens.info("Material removido com sucesso");
-	}*/
-	
+		RequestContext.getCurrentInstance().update(	
+				Arrays.asList("frm:msgs", "frm:tabela-materiais"));
+	}
+		
 	// Getters e Setters
 	
 	public List<Material> getTodosMateriais() {
