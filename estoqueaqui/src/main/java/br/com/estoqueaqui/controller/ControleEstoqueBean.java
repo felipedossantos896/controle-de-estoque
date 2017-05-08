@@ -17,44 +17,48 @@ import br.com.estoqueaqui.util.FacesMessages;
 
 @Named
 @ViewScoped
-public class ControleEstoqueBean implements Serializable{
+public class ControleEstoqueBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
+	@Inject
+	private FacesMessages mensagens;
+
+	@Inject
+	private Materiais materiais;
+
+	@Inject
+	private CadastroMaterialService cadastroMaterialService;
 
 	private List<Material> todosMateriais;
 	private Material editarMaterial = new Material();
-	
-	@Inject
-	private FacesMessages mensagens;
-	
-	@Inject
-	private Materiais materiais;
-	
-	@Inject
-	private CadastroMaterialService cadastroMaterialService;
-	
-	
-	public void consultar(){
+	private Material materialSelecionado;
+
+	public void consultar() {
 		todosMateriais = materiais.todas();
 	}
-	
-	public void prepararCadastro(){
+
+	public void prepararCadastro() {
 		editarMaterial = new Material();
 	}
-	
-	public void salvar(){
+
+	public void salvar() {
 		cadastroMaterialService.salvar(editarMaterial);
 		consultar();
-		
+
 		mensagens.info("Material Salvo com Sucesso!");
-		
-		RequestContext.getCurrentInstance().update(	
-				Arrays.asList("frm:msgs", "frm:tabela-materiais"));
+
+		RequestContext.getCurrentInstance().update(Arrays.asList("frm:msgs", "frm:tabela-materiais"));
 	}
-		
-	// Getters e Setters
 	
+	public void excluir(){
+		cadastroMaterialService.excluir(materialSelecionado);
+		materialSelecionado = null;
+		consultar();
+		
+		mensagens.info("Produto excluído com sucesso!");
+	}
+
 	public List<Material> getTodosMateriais() {
 		return todosMateriais;
 	}
@@ -62,7 +66,17 @@ public class ControleEstoqueBean implements Serializable{
 	public Material getEditarMaterial() {
 		return editarMaterial;
 	}
-	
-	
+
+	public void setEditarMaterial(Material editarMaterial) {
+		this.editarMaterial = editarMaterial;
+	}
+
+	public Material getMaterialSelecionado() {
+		return materialSelecionado;
+	}
+
+	public void setMaterialSelecionado(Material materialSelecionado) {
+		this.materialSelecionado = materialSelecionado;
+	}
 	
 }

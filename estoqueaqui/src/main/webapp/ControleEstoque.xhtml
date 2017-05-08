@@ -15,9 +15,9 @@
 
 		<h:form id="frm">
 
-			<p:messages id="msgs" />
+			<p:growl id="msgs" life="3000" />
 
-			<p:toolbar>
+			<p:toolbar id="toolbar">
 				<f:facet name="left">
 					<p:commandButton value="Novo" icon="fa fa-file" id="novo-material"
 						action="#{controleEstoqueBean.prepararCadastro}" process="@this"
@@ -30,15 +30,36 @@
 						class="ui-icon ui-icon-grip-dotted-vertical" />
 					</span>
 
-					<p:commandButton icon="fa fa-edit" title="Editar" />
-					<p:commandButton icon="fa fa-trash" title="Exluir" />
+					<p:commandButton icon="fa fa-edit" title="Editar"
+						process="@this" update="cadastro-material"
+						oncomplete="PF('cadastroMaterialDialog').show()"
+						disabled="#{controleEstoqueBean.materialSelecionado == null}">
+						<p:resetInput target="cadastro-material" />
+						
+						<f:setPropertyActionListener value="#{controleEstoqueBean.materialSelecionado}" 
+							target="#{controleEstoqueBean.editarMaterial}" />
+					</p:commandButton>
+
+					<p:commandButton icon="fa fa-trash" title="Exluir"
+						action="#{controleEstoqueBean.excluir}"
+						process="@this" update="tabela-materiais toolbar msgs"
+						disabled="#{controleEstoqueBean.materialSelecionado == null}">
+						
+						<p:confirm header="Excluir Produto" message="Deseja excluir o produto?" />	
+					</p:commandButton>
 				</f:facet>
 			</p:toolbar>
 
 			<p:dataTable id="tabela-materiais"
 				value="#{controleEstoqueBean.todosMateriais}" var="material"
 				emptyMessage="Nenhum material cadastrado." style="padding-top: 10px"
-				paginator="true" paginatorPosition="bottom" rows="10">
+				paginator="true" paginatorPosition="bottom" rows="10"
+				selection="#{controleEstoqueBean.materialSelecionado}"
+				rowKey="#{material.id}" selectionMode="single">
+
+				<p:ajax event="rowSelect" update=":frm:toolbar" />
+				<p:ajax event="rowUnselect" update=":frm:toolbar" />
+
 				<p:column headerText="Descrição" width="450">
 					<h:outputText value="#{material.descricao}" />
 				</p:column>

@@ -16,27 +16,37 @@
 	<h:outputStylesheet library="estoqueaqui" name="styles/custom.css" />
 	<h:outputStylesheet library="estoqueaqui" name="styles/layout.css" />
 	<h:outputStylesheet library="estoqueaqui" name="styles/components.css" />
-	
-	<h:outputScript target="body" library="primefaces" name="jquery/jquery.js" />
-	<h:outputScript target="body" library="estoqueaqui" name="javascripts/app.js" />
+
+	<h:outputScript target="body" library="primefaces"
+		name="jquery/jquery.js" />
+	<h:outputScript target="body" library="estoqueaqui"
+		name="javascripts/app.js" />
 </h:head>
 
 <h:body>
-	
+
 	<header class="aw-topbar">
-		<h:graphicImage library="estoqueaqui" name="images/logo.png" height="30" width="40"  />
-		
+		<h:graphicImage library="estoqueaqui" name="images/logo.png"
+			height="30" width="40" />
+
 		<a href="#" class="aw-toggle  js-toggle"><i class="fa  fa-bars"></i></a>
 	</header>
-	
+
 	<aside class="aw-sidebar  js-sidebar">
 		<ui:include src="menu.xhtml" />
 	</aside>
-	
+
 	<section class="aw-content  js-content">
 		<ui:insert name="content" />
 	</section>
-	
+
+	<h:form>
+		<p:confirmDialog global="true" id="dialogo-confirmacao">
+			<p:commandButton value="Não" type="button" id="botao-dialogo-confirmacao-nao" styleClass="ui-confirmdialog-no" />
+			<p:commandButton value="Sim" type="button" id="botao-dialogo-cinfirmacao-sim" styleClass="ui-confirmdialog-yes" style="margin-left: 100px"/>
+		</p:confirmDialog>
+	</h:form>
+
 </h:body>
 
 </html>
