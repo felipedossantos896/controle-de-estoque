@@ -47,6 +47,11 @@
 						
 						<p:confirm header="Excluir Produto" message="Deseja excluir o produto?" />	
 					</p:commandButton>
+					
+					<p:commandButton icon="fa fa-download"
+						ajax="false" immediate="true">
+						<p:dataExporter type="xls" target="tabela-materiais" fileName="produtos" />
+					</p:commandButton>
 				</f:facet>
 			</p:toolbar>
 
