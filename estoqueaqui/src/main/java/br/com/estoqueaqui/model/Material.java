@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
@@ -28,9 +30,8 @@ public class Material implements Serializable {
 	@Column(nullable = false, length = 80)
 	private String tipo;
 
-	@NotEmpty
-	@Column(nullable = false, length = 80)
-	private String unidade;
+	@Enumerated(EnumType.STRING)
+	private TipoUnidade tipoUnidade;
 
 	@NotEmpty
 	@Column(nullable = false, length = 50)
@@ -67,12 +68,12 @@ public class Material implements Serializable {
 		this.tipo = tipo;
 	}
 
-	public String getUnidade() {
-		return unidade;
+	public TipoUnidade getTipoUnidade() {
+		return tipoUnidade;
 	}
 
-	public void setUnidade(String unidade) {
-		this.unidade = unidade;
+	public void setTipoUnidade(TipoUnidade tipoUnidade) {
+		this.tipoUnidade = tipoUnidade;
 	}
 
 	public String getFornecedor() {

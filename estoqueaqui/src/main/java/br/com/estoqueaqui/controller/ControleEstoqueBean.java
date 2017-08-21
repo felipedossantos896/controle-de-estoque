@@ -11,6 +11,7 @@ import javax.inject.Named;
 import org.primefaces.context.RequestContext;
 
 import br.com.estoqueaqui.model.Material;
+import br.com.estoqueaqui.model.TipoUnidade;
 import br.com.estoqueaqui.repository.Materiais;
 import br.com.estoqueaqui.service.CadastroMaterialService;
 import br.com.estoqueaqui.util.FacesMessages;
@@ -33,6 +34,15 @@ public class ControleEstoqueBean implements Serializable {
 	private List<Material> todosMateriais;
 	private Material editarMaterial = new Material();
 	private Material materialSelecionado;
+	private TipoUnidade[] tipoUnidades;
+	
+	public TipoUnidade[] getTipoUnidades() {
+		return TipoUnidade.values();
+	}
+
+	public void setTipoUnidades(TipoUnidade[] tipoUnidades) {
+		this.tipoUnidades = tipoUnidades;
+	}
 
 	public void consultar() {
 		todosMateriais = materiais.todas();

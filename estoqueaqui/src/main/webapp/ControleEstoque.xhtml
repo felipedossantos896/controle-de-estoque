@@ -72,7 +72,7 @@
 					<h:outputText value="#{material.tipo}" />
 				</p:column>
 				<p:column headerText="Unidade">
-					<h:outputText value="#{material.unidade}" />
+					<h:outputText value="#{material.tipoUnidade}" />
 				</p:column>
 				<p:column headerText="Fonecerdor">
 					<h:outputText value="#{material.fornecedor}" />
@@ -99,14 +99,15 @@
 						value="#{controleEstoqueBean.editarMaterial.descricao}" />
 
 					<p:outputLabel value="Tipo" for="tipo" />
-					<p:inputText id="tipo"
-						value="#{controleEstoqueBean.editarMaterial.tipo}" />
+					<p:inputText id="tipo" value="#{controleEstoqueBean.editarMaterial.tipo}" />
 
-					<p:outputLabel value="Unidade" for="unidade" />
-					<p:inputText id="unidade"
-						value="#{controleEstoqueBean.editarMaterial.unidade}" />
-
-					<p:outputLabel value="Fornecedoasdasdr" for="fornecedor" />
+					<p:outputLabel value="Unidade" for="tipo-unidade" />
+					<p:selectOneMenu id="tipo-unidade" value="#{controleEstoqueBean.editarMaterial.tipoUnidade}">
+						<f:selectItems value="#{controleEstoqueBean.tipoUnidades}" var="tipoUnidade" 
+							itemValue="#{tipoUnidade}" itemLabel="#{tipoUnidade.descricao}"/>
+					</p:selectOneMenu>
+					
+					<p:outputLabel value="Fornecedor" for="fornecedor" />
 					<p:inputText id="fornecedor"
 						value="#{controleEstoqueBean.editarMaterial.fornecedor}" />
 
